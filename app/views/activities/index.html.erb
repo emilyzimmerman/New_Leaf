@@ -1,0 +1,8 @@
+<h1>Explore all the Activities</h1>
+
+<% @activities.each do |activity| %>
+   <h2><b> <%= activity.name %> </b></h2>
+   <div> <%= activity.description %> </div>
+    <%= image_tag activity.image_path %>
+
+<%end%>
