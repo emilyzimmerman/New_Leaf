@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_20_025733) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_20_213954) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "image_path", default: "https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "activities_categories", force: :cascade do |t|
@@ -30,6 +31,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_025733) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
