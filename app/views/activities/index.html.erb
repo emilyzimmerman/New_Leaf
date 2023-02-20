@@ -2,7 +2,11 @@
 
 <% @activities.each do |activity| %>
    <h2><b> <%= activity.name %> </b></h2>
-   <div> <%= activity.description %> </div>
-    <%= image_tag activity.image_path %>
+   <p> Description: <%= activity.description %> </p>
+    <div>        
+        <%= link_to activity_path(activity) do%>
+            <%= image_tag activity.image_path, style: "border: 1px solid black" %> 
+        <%end%>
+    </div>
 
 <%end%>

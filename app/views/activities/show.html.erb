@@ -1,2 +1,18 @@
-<h1>Activities#show</h1>
-<p>Find me in app/views/activities/show.html.erb</p>
+<h1><%= @activity.name%></h1>
+<p><%= @activity.description%></p>
+<div>
+    <%= image_tag @activity.image_path, style: "border: 1px solid black" %> 
+</div>
+
+
+<% @activity.categories.each do |category| %>
+    <div>
+    <b> <%= category.name %> </b>
+    </div>
+<% end %>
+
+
+
+
+<%= link_to "Edit", edit_activity_path(@activity)%>
+<%= button_to "Delete", @activity, method: :delete %>

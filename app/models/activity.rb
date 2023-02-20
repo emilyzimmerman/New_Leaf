@@ -1,4 +1,7 @@
 class Activity < ApplicationRecord
+
+    has_and_belongs_to_many :categories 
+    
     
     validates :name, presence: true, length: {minimum: 2, maximum: 200}
     validates :description, presence: true, length: {minimum: 2, maximum: 400}

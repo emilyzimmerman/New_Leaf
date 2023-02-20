@@ -1,0 +1,32 @@
+<%= form_with(model: @activity) do |form|%>
+ 
+    <% if @activity.errors.any? %>
+        <% @activity.errors.full_messages.each do |message| %>  
+          <div>
+            <%= message %>
+        </div>
+        <%end%>
+    <%end%>
+
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+
+    <div>
+        <%= form.label :image_path %>
+        <%= form.text_area :image_path %>
+    </div>
+
+    <div>
+        <%= form.label :category_id%>
+        <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
+    </div>
+
+    <%= form.submit %>
+<%end%>
