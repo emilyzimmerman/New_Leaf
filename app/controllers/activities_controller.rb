@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :require_same_creator, only: [:destroy]
   #GET all activities
   def index
     @activities = Activity.all 
@@ -11,7 +13,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(activity_params)
+    @activity = helpers.current_user.activities.new(activity_params)
 
     if @activity.save
       flash[:notice] = "Activity successfully uploaded"
@@ -48,6 +50,14 @@ class ActivitiesController < ApplicationController
   end
 
   private 
+
+  def require_same_creator
+    if helpers.current_user != @activity.user
+      flash[:notice] = "Unauthorized"
+      redirect_to helpers.current_user
+    end
+  end
+
   def activity_params 
     params.require(:activity).permit(:name, :description, :image_path, category_ids: [])
   end

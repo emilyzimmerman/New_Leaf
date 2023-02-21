@@ -1,4 +1,9 @@
 <h1><%= @activity.name%></h1>
+
+<% if @activity.user %>
+    <div> <%= link_to "By #{@activity.user.username}", @activity.user %>
+<%end%>
+
 <p><%= @activity.description%></p>
 <div>
     <%= image_tag @activity.image_path, style: "border: 1px solid black" %> 
@@ -15,4 +20,7 @@
 
 
 <%= link_to "Edit", edit_activity_path(@activity)%>
+
+<% if current_user == @activity.user%>
 <%= button_to "Delete", @activity, method: :delete %>
+<%end%>
