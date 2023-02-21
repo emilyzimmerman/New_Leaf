@@ -68,17 +68,13 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (5.2.3)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.11.6, < 3)
-      sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bulma-rails (0.9.4)
+      sassc (~> 2.0)
     capybara (3.38.0)
       addressable
       matrix
@@ -93,7 +89,6 @@ GEM
     date (3.3.3)
     debug (1.7.1)
     erubi (1.12.0)
-    execjs (2.8.1)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -135,7 +130,6 @@ GEM
       stringio
       time
       uri
-    popper_js (2.11.6)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -170,6 +164,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.8.1)
     regexp_parser (2.7.0)
     rexml (3.2.5)
     rubyzip (2.3.2)
@@ -231,7 +226,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootsnap
-  bootstrap (~> 5.2.2)
+  bulma-rails (~> 0.9.4)
   capybara
   debug
   importmap-rails
@@ -239,6 +234,7 @@ DEPENDENCIES
   open-uri
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  redis (~> 4.0)
   sassc-rails
   selenium-webdriver
   sprockets-rails
