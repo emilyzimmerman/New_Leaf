@@ -1,2 +1,11 @@
 <h1>Welcome to New Leaf</h1>
 <p>Note to self: add scraper to scrap data on human emissions here</p>
+
+
+<h2>FIX: Why are the names messed up? Why aren't all countries showing?</h2>
+
+<% @countries.each do |country| %>
+   <p><b> <%= country.name %> </b></p>
+   <p> Year: <%= country.year %> </p>
+   <p> Air Quality: <%= country.ghg_amount %> </p>
+<%end%>

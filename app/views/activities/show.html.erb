@@ -17,10 +17,7 @@
 <% end %>
 
 
-
-
-<%= link_to "Edit", edit_activity_path(@activity)%>
-
 <% if current_user == @activity.user%>
+<%= link_to "Edit", edit_activity_path(@activity)%>
 <%= button_to "Delete", @activity, method: :delete %>
 <%end%>

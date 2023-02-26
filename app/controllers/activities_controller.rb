@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
   before_action :require_user
-  before_action :require_same_creator, only: [:destroy]
+  before_action :require_same_creator, only: [:destroy, :edit]
   #GET all activities
   def index
     @activities = Activity.all 
