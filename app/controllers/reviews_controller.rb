@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
 
   # POST /reviews or /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = helpers.current_user.reviews.new(review_params)
 
     respond_to do |format|
       if @review.save

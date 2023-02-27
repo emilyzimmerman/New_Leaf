@@ -23,3 +23,11 @@
 <%end%>
 
 <%= link_to "Add Review", new_review_path %>
+
+<% @activity.reviews.each do |review| %>
+    <div>
+   <b> <p> <%= review.user.username %> </p> </b>
+    <p> <%= review.date %> </p>
+    <p> <%= review.content %> </p>
+    </div>
+<% end %>
