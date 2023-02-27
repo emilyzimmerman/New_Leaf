@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   resources :activities
   resources :categories
+  resources :reviews
 
 end

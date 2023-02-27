@@ -2,6 +2,7 @@ class Activity < ApplicationRecord
     belongs_to :user
 
     has_and_belongs_to_many :categories 
+    has_many :reviews
     
     
     validates :name, presence: true, length: {minimum: 2, maximum: 200}
