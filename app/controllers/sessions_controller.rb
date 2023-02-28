@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :already_signed_in?, except: [:destroy]
 #GET login Page
   def new
   end
@@ -14,5 +15,11 @@ class SessionsController < ApplicationController
       flash[:notice] = "Login Failed"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy 
+    session[:user_id] = nil 
+    flash[:notice] = "Logout successful."
+    redirect_to login_path
   end
 end

@@ -1,36 +1,35 @@
 <h1>Sign Up</h1>
+
 <% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
     <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> 
-        prohibited this category from being saved:</h2>
+      <h4><%= pluralize(@user.errors.count, "error") %> 
+        prohibited this category from being saved:</h4>
       <ul>
         <% @user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
 <%= form_with(model: @user) do |form| %>
-    <div>
-        <%= form.label :username%>
-        <%= form.text_field :username%>
-    </div>
-
-    <div>
-        <%= form.label :email%>
-        <%= form.text_field :email%>
-    </div>
-
-    <div>
-        <%= form.label :password%>
-        <%= form.password_field :password%>
-    </div>
-
-    <div>
-    Optional: 
-        <%= form.label :bio%>
-        <%= form.text_area :bio%>
-    </div>
-<%= form.submit "Sign Up" %>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><%= form.label :username%></label>
+    <%= form.text_field :username, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"><%= form.label :email%></label>
+    <%= form.text_field :email, class: "form-control"%>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><%= form.label :password%></label>
+    <%= form.password_field :password, class: "form-control"%>  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">I definitely read the Terms & Policy</label>
+  </div>
+    <%=form.submit "Sign Up", class: "btn btn-primary" %>
 <%end%>

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :already_signed_in?, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -13,6 +15,14 @@ class UsersController < ApplicationController
       flash[:notice] = "Account Creation Error"
       render :new, status: :unprocessable_entity 
     end
+  end
+
+  def show 
+    @user = User.find(params[:id])
+  end
+
+  def show_reviews
+    @user = User.find(params[:id])
   end
 
   private 

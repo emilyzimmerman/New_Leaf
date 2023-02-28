@@ -1,12 +1,20 @@
 <h1>Explore all the Activities</h1>
 
 <% @activities.each do |activity| %>
-   <h2><b> <%= activity.name %> </b></h2>
-   <p> Description: <%= activity.description %> </p>
+<div class="card" style="width: 18rem;">
     <div>        
         <%= link_to activity_path(activity) do%>
-            <%= image_tag activity.image_path, style: "border: 1px solid black" %> 
+            <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
         <%end%>
     </div>
-
+    <div class="card-body">
+        <h2><b> <%= activity.name %> </b></h2>
+        <p class="card-text">
+            <p>Description: <%= activity.description %></p>
+        </p>
+    </div>
+</div>
 <%end%>
+
+
+
