@@ -1,15 +1,11 @@
 <h1>Login</h1>
-
 <%= form_with do |form| %>
-    <div>
-    <%= form.label :email%>
-    <%= form.text_field :email%>
-    </div>
-
-    <div>
-    <%= form.label :password%>
-    <%= form.password_field :password%>
-    </div>
-
-    <%= form.submit "Login"%>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"><%= form.label :email%></label>
+    <%= form.text_field :email, class: "form-control"%>
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><%= form.label :password%></label>
+    <%= form.password_field :password, class: "form-control"%>  </div>
+    <%=form.submit "Login", class: "btn btn-primary" %>
 <%end%>

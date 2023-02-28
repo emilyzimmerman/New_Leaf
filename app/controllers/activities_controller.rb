@@ -49,6 +49,10 @@ class ActivitiesController < ApplicationController
 
   end
 
+  def save
+    helpers.current_user << @activity 
+  end
+
   private 
 
   def require_same_creator
