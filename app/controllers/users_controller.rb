@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Account Successfully Created"
-      redirect_to root_path 
+      redirect_to user_path 
     else 
       flash[:notice] = "Account Creation Error"
       render :new, status: :unprocessable_entity 

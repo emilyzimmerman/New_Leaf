@@ -1,5 +1,6 @@
-<%= form_with(model: review) do |form| %>
+<%= form_with(model: review, url: new_activity_review_path) do |form| %>
   <% if review.errors.any? %>
+  <div class="alert alert-danger" role="alert">
     <div style="color: red">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
@@ -9,6 +10,7 @@
         <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
 
@@ -23,16 +25,6 @@
     <%= form.datetime_field :date, class: "form-control" %>
   <label for="floatingTextarea2"><%= form.label :date%></label>
 </div>
-
-  <div>
-    <%= form.label :activity_id, style: "display: block" %>
-    <%= form.text_field :activity_id %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
 
   <div>
     <%= form.submit "Submit", class: "btn btn-success" %>

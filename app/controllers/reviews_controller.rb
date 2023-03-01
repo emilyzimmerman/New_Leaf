@@ -22,7 +22,8 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @review = helpers.current_user.reviews.new(review_params)
-
+    activity = Activity.find(params[:activity_id])
+    @review.activity_id = params[:activity_id]
     respond_to do |format|
       if @review.save
         format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
@@ -32,6 +33,8 @@ class ReviewsController < ApplicationController
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
+
+    debugger
   end
 
   # PATCH/PUT /reviews/1 or /reviews/1.json

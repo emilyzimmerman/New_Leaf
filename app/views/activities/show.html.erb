@@ -27,8 +27,9 @@
 <%= link_to "Edit", edit_activity_path(@activity), class:"btn btn-outline-success"%>
 <%= button_to "Delete", @activity, method: :delete, class:"btn btn-outline-danger" %>
 <%end%>
+
 <div><p>&nbsp</p></div>
-<%= link_to "Add Review", new_review_path, class: "btn btn-outline-success"%>
+<%= link_to "Add Review", new_activity_review_path(@activity), class: "btn btn-outline-success"%>
 
 
 <section style="background-color: #f7f6f6;">
@@ -54,7 +55,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <p class="small mb-0" style="color: #aaa;">
                     <% if current_user == review.user%>
-                    <%= link_to "Edit", edit_review_path(review), class:"btn btn-outline-secondary"%>
+                    <%= link_to "Edit", edit_activity_review_path(review), class:"btn btn-outline-secondary"%>
                     <%= button_to "Delete", review, method: :delete, class:"btn btn-outline-danger"%>
                     <%end%>                    
                   </p>
