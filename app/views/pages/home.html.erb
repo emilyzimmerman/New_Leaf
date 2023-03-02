@@ -1,8 +1,50 @@
 <h1>Welcome to New Leaf</h1>
-<p>Note to self: Need to drop the first iteration</p>
 
-<% @countries.each do |country| %>
-   <p><b> <%= country.name %> </b></p>
-   <p> Year: <%= country.year %> </p>
-   <p> Air Quality: <%= country.ghg_amount %> </p>
-<%end%>
+<h2>Explore</h2>
+<div class="container">
+   <div class="row">
+      <% Activity.limit(5).each do |activity| %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+      <div class="card" style="width: 18rem;">
+            <div>        
+               <%= link_to activity_path(activity) do%>
+               <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
+               <%end%>
+            </div>
+            <div class="card-body">
+               <h2><b> <%= activity.name %> </b></h2>
+               <p class="card-text">
+                  <p>Description: <%= activity.description.slice(0,10) %>....</p>
+               </p>
+            </div>
+         </div>
+      </div>
+      <%end%>
+   </div>
+</div>
+
+<hr>
+<h2>Snip of how pollution is affecting our world today:</h2>
+<div class="container" style= "border: 1px solid black">
+   <div class="row">
+      <% @countries.drop(1).each do |country| %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+         <div class = "container" style: >
+            <div class="card" style="width: 18rem; height: 8rem; margin-bottom: 2rem; text-align: center">
+               <div class="card-body" style= "border: 1px solid black">
+                  <h5 class="card-title"><%= country.name %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Year: <%= country.year %></h6>
+                  <p class="card-text">Air Quality: <%= country.ghg_amount %> </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <%end%>
+   </div>
+</div>
+
+
+
+
+      
+      
