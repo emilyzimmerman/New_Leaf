@@ -1,4 +1,5 @@
-<%= form_with(model: review, url: new_activity_review_path) do |form| %>
+<div class= 'container'>
+<%= form_with(model: review, url: activity_reviews_path) do |form| %>
   <% if review.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <div style="color: red">
@@ -26,8 +27,8 @@
   <label for="floatingTextarea2"><%= form.label :date%></label>
 </div>
 
-  <div>
-    <%= form.submit "Submit", class: "btn btn-success" %>
-  </div>
+<div class="btn btn-success">
+<%= form.submit %>
+</div>
 <% end %>
-
+</div>

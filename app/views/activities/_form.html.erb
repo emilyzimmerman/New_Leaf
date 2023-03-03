@@ -1,35 +1,30 @@
+<div class= "container">
 <%= form_with(model: @activity) do |form|%>
- 
-    <% if @activity.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-        <% @activity.errors.full_messages.each do |message| %>  
-          <div>
-            <%= message %>
-        </div>
-        <%end%>
+<div class="input-group mb-3">
+    <%= form.label :name, class:"input-group-text"%>
+    <%= form.text_field :name, class: "form-control" %>
+</div>
+
+<div class="input-group">
+    <%= form.label :description, class:"input-group-text" %>
+    <%= form.text_area :description, class: "form-control" %>
+</div>
+
+<label for="basic-url" class="form-label"><%= form.label :image_path %></label>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+    <%= form.text_area :image_path, class: "form-control" %>
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text"><%= form.label :category_id%></span>
+    <div class="form-control">
+    <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
     </div>
-    <%end%>
+</div>
 
-
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-
-    <div>
-        <%= form.label :description %>
-        <%= form.text_area :description %>
-    </div>
-
-    <div>
-        <%= form.label :image_path %>
-        <%= form.text_area :image_path %>
-    </div>
-
-    <div>
-        <%= form.label :category_id%>
-        <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
-    </div>
-
-    <%= form.submit %>
+<div class="btn btn-success">
+<%= form.submit %>
+</div>
 <%end%>
+</div>

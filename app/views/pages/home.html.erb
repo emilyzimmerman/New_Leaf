@@ -1,31 +1,55 @@
-<h1>Welcome to New Leaf</h1>
+<div style= "position: relative">
+<img 
+   src="https://img.freepik.com/free-photo/morning-fog-creeps-with-scraps-autumn-mountain-forest-covered-gold-leaves_146671-19800.jpg?w=900&t=st=1677794744~exp=1677795344~hmac=487a0d9ed57bebfe7a9ca2b3e6803c6514c09cd2328036310bb03ced72f57089" 
+   class="img-fluid" alt="..." 
+   style= "width:100%">
 
-<h2>Explore</h2>
-<div class="container">
-   <div class="row">
-      <% Activity.limit(5).each do |activity| %>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-      <div class="card" style="width: 18rem;">
-            <div>        
-               <%= link_to activity_path(activity) do%>
-               <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
-               <%end%>
-            </div>
-            <div class="card-body">
-               <h2><b> <%= activity.name %> </b></h2>
-               <p class="card-text">
-                  <p>Description: <%= activity.description.slice(0,10) %>....</p>
-               </p>
-            </div>
-         </div>
-      </div>
-      <%end%>
+   <div
+      class="home" 
+      style="
+         border-style:solid; 
+         border-color: black; 
+         padding: 1em; 
+         width: 30rem; 
+         height:15rem; 
+         background-color: #3B3C36; 
+         text-align: center; 
+         color:white;
+         position: absolute; 
+         right: 10px; 
+         top: 300px; 
+         z-index: 1;
+         opacity:0.8;">
+      <h1>Welcome to New Leaf</h1>
    </div>
 </div>
 
+   <h2>What Can You Do?</h2>
+   <div class="container">
+      <div class="row">
+         <% Activity.limit(5).each do |activity| %>
+         <div class="col-xs-12 col-md-6 col-lg-4">
+         <div class="card" style="width: 18rem;">
+               <div>        
+                  <%= link_to activity_path(activity) do%>
+                  <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
+                  <%end%>
+               </div>
+               <div class="card-body">
+                  <h2><b> <%= activity.name %> </b></h2>
+                  <p class="card-text">
+                     <p>Description: <%= activity.description.slice(0,10) %>....</p>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <%end%>
+      </div>
+   </div>
+<%= link_to "Explore More", activities_path%>
 <hr>
 <h2>Snip of how pollution is affecting our world today:</h2>
-<div class="container" style= "border: 1px solid black">
+<div class="container" style= "border: 1px solid black; background-color: #EB9C5C">
    <div class="row">
       <% @countries.drop(1).each do |country| %>
       <div class="col-xs-12 col-md-6 col-lg-4">

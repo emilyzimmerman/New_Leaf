@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     @review.activity_id = params[:activity_id]
     respond_to do |format|
       if @review.save
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
+        format.html { redirect_to activity, notice: "Review was successfully created." }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,7 +34,6 @@ class ReviewsController < ApplicationController
       end
     end
 
-    debugger
   end
 
   # PATCH/PUT /reviews/1 or /reviews/1.json
@@ -55,7 +54,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      format.html { redirect_to activity_url, notice: "Review was successfully destroyed." }
       format.json { head :no_content }
     end
   end

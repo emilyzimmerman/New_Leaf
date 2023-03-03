@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
 
     has_and_belongs_to_many :categories 
     has_many :reviews
+    has_many :favorites
     
     
     validates :name, presence: true, length: {minimum: 2, maximum: 200}

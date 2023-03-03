@@ -6,71 +6,76 @@
     <div> <%= link_to "By #{@activity.user.username}", @activity.user %>
 <%end%>
 
-<div class="card" style="width: 25rem;">
-    <%= image_tag @activity.image_path, style: "border: 1px solid black", class:"card-img-top" %> 
-  <div class="card-body">
-    <p><%= @activity.description%></p>
+<div class= "container" >
+  <div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 25rem;">
+            <%= image_tag @activity.image_path, style: "border: 1px solid black", class:"card-img-top" %> 
+          <div class="card-body">
+            <p><%= @activity.description%></p>
+          </div>
+          <% @activity.categories.each do |category| %>
+          <ul class="list-group list-group-flush">
+            <li>
+                <b><%= category.name%></b>
+            </li>
+          </ul>
+          <% end %>
+        </div>
+        <% if current_user == @activity.user%>
+        <%= link_to "Edit", edit_activity_path(@activity), class:"btn btn-outline-success"%>
+        <%= button_to "Delete", @activity, method: :delete, class:"btn btn-outline-danger" %>
+        <%end%>
+    </div>
+<div class="col-md-6">
+<section style="background-color: #f7f6f6;">
+          <div class="container my-5 py-5 text-dark">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 col-lg-10 col-xl-8">
+        <div style="text-align: center"><h2>Reviews</h2></div>
+        <% @activity.reviews.each do |review| %>
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="d-flex flex-start">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="avatar" width="40"
+                        height="40" />
+                      <div class="w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                          <h6 class="text-primary fw-bold mb-0">
+                            <%= review.user.username %>
+                            <span class="text-dark ms-2"><%= review.content %></span>
+                          </h6>
+                          <p class="mb-0"><%= review.date %></p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p class="small mb-0" style="color: #aaa;">
+                            <% if current_user == review.user%>
+                            <%= link_to "Edit", edit_activity_review_path(review), class:"btn btn-outline-secondary"%>
+                            <%= button_to "Delete", activity_review_path(@activity, review), method: :delete, class:"btn btn-outline-danger"%>
+                            <%end%>                    
+                          </p>
+                          <div class="d-flex flex-row">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            <i class="far fa-check-circle" style="color: #aaa;"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+
+              </div>
+            </div>
+          </div>
+</section>
+</div>
   </div>
-  <% @activity.categories.each do |category| %>
-  <ul class="list-group list-group-flush">
-    <li>
-        <b><%= category.name%></b>
-    </li>
-  </ul>
-  <% end %>
 </div>
 
 
 
-
-<% if current_user == @activity.user%>
-<%= link_to "Edit", edit_activity_path(@activity), class:"btn btn-outline-success"%>
-<%= button_to "Delete", @activity, method: :delete, class:"btn btn-outline-danger" %>
-<%end%>
-
 <div><p>&nbsp</p></div>
 <%= link_to "Add Review", new_activity_review_path(@activity), class: "btn btn-outline-success"%>
 
-
-<section style="background-color: #f7f6f6;">
-  <div class="container my-5 py-5 text-dark">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-12 col-lg-10 col-xl-8">
-
-<% @activity.reviews.each do |review| %>
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="d-flex flex-start">
-              <img class="rounded-circle shadow-1-strong me-3"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="avatar" width="40"
-                height="40" />
-              <div class="w-100">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h6 class="text-primary fw-bold mb-0">
-                    <%= review.user.username %>
-                    <span class="text-dark ms-2"><%= review.content %></span>
-                  </h6>
-                  <p class="mb-0"><%= review.date %></p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <p class="small mb-0" style="color: #aaa;">
-                    <% if current_user == review.user%>
-                    <%= link_to "Edit", edit_activity_review_path(review), class:"btn btn-outline-secondary"%>
-                    <%= button_to "Delete", review, method: :delete, class:"btn btn-outline-danger"%>
-                    <%end%>                    
-                  </p>
-                  <div class="d-flex flex-row">
-                    <i class="fas fa-star text-warning me-2"></i>
-                    <i class="far fa-check-circle" style="color: #aaa;"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
-
-      </div>
-    </div>
-  </div>
-</section>

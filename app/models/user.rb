@@ -5,4 +5,5 @@ class User < ApplicationRecord
     
     has_many :activities 
     has_many :reviews
+    has_many :favorites
 end

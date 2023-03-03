@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_231831) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_013851) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_231831) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_favorites_on_activity_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "content"
     t.datetime "date"
@@ -61,6 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_231831) do
     t.string "password_digest"
   end
 
+  add_foreign_key "favorites", "activities"
+  add_foreign_key "favorites", "users"
   add_foreign_key "reviews", "activities"
   add_foreign_key "reviews", "users"
 end
