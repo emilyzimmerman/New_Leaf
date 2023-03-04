@@ -1,5 +1,19 @@
-<h1>Sign Up</h1>
+<div style="text-align: center; margin-top: 40px; margin-bottom: 20px">
+  <h1>Sign up to New Leaf</h1>
+  <p>Already have an account? <%= link_to "Login", login_path%></p>
+</div>
+<div class="row">
+<div class= "col-md-6">
+  <img 
+    src="https://img.freepik.com/free-vector/hand-drawn-flat-design-tree-planting-illustration_23-2149210052.jpg?w=740&t=st=1677918220~exp=1677918820~hmac=ff078014d62edcc3e5c0137422c1869b02ebd94b0b316c47a78a918287b18e11" 
+    class="img-fluid" alt="..." 
+    style= "
+        width:70%;
+        padding: 1em
+        margin-left: 40px">
+</div>
 
+<div class= "col-md-6">
 <% if @user.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <div style="color: red">
@@ -14,6 +28,7 @@
   </div>
   <% end %>
 
+<div class="container" style="padding: 30px; background-color: #82AC85; border-radius: 25px; margin-top: 20px; margin-right: 20px">
 <%= form_with(model: @user) do |form| %>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label"><%= form.label :username%></label>
@@ -22,14 +37,13 @@
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label"><%= form.label :email%></label>
     <%= form.text_field :email, class: "form-control"%>
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" class="form-text" style="color: black">We'll never share your email with anyone else.</div>
   </div>
    <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label"><%= form.label :password%></label>
     <%= form.password_field :password, class: "form-control"%>  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">I definitely read the Terms & Policy</label>
-  </div>
-    <%=form.submit "Sign Up", class: "btn btn-primary" %>
+    <%=form.submit "Sign Up", class: "btn btn-dark" %>
 <%end%>
+</div>
+</div>
+</div>

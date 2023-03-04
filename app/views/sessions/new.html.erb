@@ -1,6 +1,9 @@
 <div class="row">
 <div class="col-md-6">
-  <div class="container" style="padding: 30px; background-color:#FFDDD6; margin-top: 170px; margin-left: 30px">
+  <div style ="margin-top:150px; margin-left: 30px; margin-bottom: 20px">
+    <h1>Welcome Back User!</h1>
+  </div>
+  <div class="container" style="padding: 30px; background-color:#A9C7AC; margin-left: 30px">
   <%= form_with do |form| %>
   <h1>Login To Your Account</h1>
     <div class="mb-3">
@@ -14,7 +17,7 @@
   <%end%>
   </div>
   <div style= "margin-left: 60px">
-    <%= link_to "Don't have an account? Sign Up Here", sign_up_path%>
+    <p>Don't have an account? <%= link_to "Sign Up Here", sign_up_path%></p>
   </div>
 </div>
 <div class="col-md-6">
