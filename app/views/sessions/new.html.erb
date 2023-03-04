@@ -1,11 +1,28 @@
-<h1>Login</h1>
-<%= form_with do |form| %>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label"><%= form.label :email%></label>
-    <%= form.text_field :email, class: "form-control"%>
+<div class="row">
+<div class="col-md-6">
+  <div class="container" style="padding: 30px; background-color:#FFDDD6; margin-top: 170px; margin-left: 30px">
+  <%= form_with do |form| %>
+  <h1>Login To Your Account</h1>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"><%= form.label :email%></label>
+      <%= form.text_field :email, class: "form-control"%>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"><%= form.label :password%></label>
+      <%= form.password_field :password, class: "form-control"%>  </div>
+      <%=form.submit "Login", class: "btn btn-outline-dark" %>
+  <%end%>
   </div>
-   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label"><%= form.label :password%></label>
-    <%= form.password_field :password, class: "form-control"%>  </div>
-    <%=form.submit "Login", class: "btn btn-primary" %>
-<%end%>
+  <div style= "margin-left: 60px">
+    <%= link_to "Don't have an account? Sign Up Here", sign_up_path%>
+  </div>
+</div>
+<div class="col-md-6">
+  <img 
+    src="https://img.freepik.com/free-vector/tiny-women-growing-watering-potted-plant_74855-14180.jpg?w=740&t=st=1677917228~exp=1677917828~hmac=d9e050568f41d82e4fdce1afda7b17ac4b8fc72b9b24bb08bf1c347d864ff74d" 
+    class="img-fluid" alt="..." 
+    style= "
+        width:100%;
+        padding: 1em">
+</div>
+</div>

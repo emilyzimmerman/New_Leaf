@@ -1,7 +1,16 @@
-body {
+.all {
     background: linear-gradient(to right, #83B692 50%, #ffffff 50%);
+    height: 680px;
+    width: 100%;
 }
 
-.container {
-    box-shadow: 10px 10px; 
+.about {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    box-shadow: 10px 10px #475B5A; 
+}
+
+.about_text{
+    font-size: 80px;
 }
