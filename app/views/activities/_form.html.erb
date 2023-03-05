@@ -1,4 +1,4 @@
-<div class= "container">
+<div class= "container" style="background-color: #EB9C5C; padding: 30px;border-radius: 25px; width: 600px">
 <%= form_with(model: @activity) do |form|%>
 <div class="input-group mb-3">
     <%= form.label :name, class:"input-group-text"%>
@@ -22,9 +22,6 @@
     <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
     </div>
 </div>
-
-<div class="btn btn-success">
-<%= form.submit %>
-</div>
+<%= form.submit "Submit", class:"btn btn-secondary", style: "text-align: center" %>
 <%end%>
 </div>

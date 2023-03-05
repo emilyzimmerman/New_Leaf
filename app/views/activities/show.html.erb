@@ -1,13 +1,14 @@
+<div style= "padding: 30px">
 <%= link_to "Back", activities_path, class:"btn btn-outline-secondary"%>
 <div><p>&nbsp</p></div>
 <h1><%= @activity.name%></h1>
 
 <% if @activity.user %>
-    <div> <%= link_to "By #{@activity.user.username}", @activity.user %>
+    <div> <h3><%= link_to "By #{@activity.user.username}", @activity.user %></h3></div>
 <%end%>
 
 <div>
-  <%= @activity.favorites.count%>
+<h4>Likes: <%= @activity.favorites.count%></h4>
 </div>
 <div class= "container" >
   <div class="row">
@@ -19,9 +20,7 @@
           </div>
           <% @activity.categories.each do |category| %>
           <ul class="list-group list-group-flush">
-            <li>
                 <b><%= category.name%></b>
-            </li>
           </ul>
           <% end %>
         </div>
@@ -47,9 +46,13 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                           <h6 class="text-primary fw-bold mb-0">
                             <%= review.user.username %>
+                            <div>
                             <span class="text-dark ms-2"><%= review.content %></span>
+                            </div>
                           </h6>
-                          <p class="mb-0"><%= review.date.strftime("%A, %B, %d, %Y") if review.date.present? %></p>
+                          <div>
+                            <p class="mb-0"><%= review.date.strftime("%B, %d, %Y") if review.date.present? %></p>
+                          </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                           <p class="small mb-0" style="color: #aaa;">
@@ -72,7 +75,12 @@
               </div>
             </div>
           </div>
-</section>
+      <div><p>&nbsp</p></div>
+      <%= link_to "Add Review", new_activity_review_path(@activity), 
+          class: "btn btn-outline-success",
+          style: "position:center"%>
+    </section>
+</div>
 </div>
   </div>
 </div>
@@ -82,9 +90,4 @@
 <%else%>
  <%= button_to "Unlike", favorite_path(favorite), method: :delete%>
 <%end%>
-
-
-
-<div><p>&nbsp</p></div>
-<%= link_to "Add Review", new_activity_review_path(@activity), class: "btn btn-outline-success"%>
 
