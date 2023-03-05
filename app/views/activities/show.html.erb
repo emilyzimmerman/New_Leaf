@@ -49,7 +49,7 @@
                             <%= review.user.username %>
                             <span class="text-dark ms-2"><%= review.content %></span>
                           </h6>
-                          <p class="mb-0"><%= review.date %></p>
+                          <p class="mb-0"><%= review.date.strftime("%A, %B, %d, %Y") if review.date.present? %></p>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                           <p class="small mb-0" style="color: #aaa;">
