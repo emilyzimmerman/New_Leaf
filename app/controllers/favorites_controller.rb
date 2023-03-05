@@ -6,45 +6,16 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.all
   end
 
-  # GET /favorites/1 or /favorites/1.json
-  def show
-  end
-
-  # GET /favorites/new
-  def new
-    @favorite = Favorite.new
-  end
-
-  # GET /favorites/1/edit
-  def edit
-  end
 
   # POST /favorites or /favorites.json
   def create
-    @favorite = Favorite.new(favorite_params)
-
-    respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to favorite_url(@favorite), notice: "Favorite was successfully created." }
-        format.json { render :show, status: :created, location: @favorite }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
-      end
+    @favorite = helpers.current_user.favorites.new(favorite_params)
+    if !@favorite.save
+      flash[:notice] = @favorite.errors.full_messages
+      redirect_to activities_path
     end
   end
-
-  # PATCH/PUT /favorites/1 or /favorites/1.json
-  def update
-    respond_to do |format|
-      if @favorite.update(favorite_params)
-        format.html { redirect_to favorite_url(@favorite), notice: "Favorite was successfully updated." }
-        format.json { render :show, status: :ok, location: @favorite }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
-      end
-    end
+  
   end
 
   # DELETE /favorites/1 or /favorites/1.json
@@ -67,4 +38,4 @@ class FavoritesController < ApplicationController
     def favorite_params
       params.require(:favorite).permit(:user_id, :activity_id)
     end
-end
+

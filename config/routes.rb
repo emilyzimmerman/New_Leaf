@@ -10,6 +10,5 @@ Rails.application.routes.draw do
     resources :reviews
   end
   resources :categories
-
-
+  resources :favorites
 end
