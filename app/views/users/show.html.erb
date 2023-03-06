@@ -1,11 +1,15 @@
-<h1><%= @user.username%> Created Activites </h1>
+<%= stylesheet_link_tag "user"%>
 
-
-<div class="container">
+<div class="userPage">
+<div style="text-align:center">
+   <h2>Welcome to your dashboard <%= @user.username%></h2>
+</div>
+<hr>
+<h2><%= @user.username%> Created Activites </h2>
    <div class="row">
     <% @user.activities.each do |activity| %>
       <div class="col-xs-12 col-md-6 col-lg-4">
-      <div class="card" style="width: 100%">
+      <div class="card" style="width: 18rem">
             <div>        
                <%= link_to activity_path(activity) do%>
                <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
@@ -14,20 +18,39 @@
             <div class="card-body">
                <h2><b> <%= activity.name %> </b></h2>
                <p class="card-text">
-                  <p>Description: <%= activity.description.slice(0,10) %>....</p>
+                  <p>Description: <%= activity.description%></p>
                </p>
             </div>
          </div>
       </div>
       <%end%>
    </div>
+
+<h2><%= @user.username%> Favorites </h2>
+   <div class="row">
+    <% @user.favorites.each do |favorite| %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+      <div class="card" style="width: 18rem">
+            <div>        
+               <%= link_to activity_path(favorite.activity) do%>
+               <%= image_tag favorite.activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
+               <%end%>
+            </div>
+            <div class="card-body">
+               <h2><b> <%= favorite.activity.name %> </b></h2>
+               <p class="card-text">
+                  <p>Description: <%= favorite.activity.description%></p>
+               </p>
+            </div>
+         </div>
+      </div>
+      <%end%>
+   </div>
+
+<h2><%= @user.username%> Reviews </h2>
+   <% @user.reviews.each do |review| %>
+      <p> <%= review.date %> </p>
+      <p><%= review.content %> </p>
+   <%end%>
+
 </div>
-
-
-<b>Insert Column here</b>
-
-<h1><%= @user.username%> Reviews </h1>
-<% @user.reviews.each do |review| %>
-   <p> <%= review.date %> </p>
-   <p><%= review.content %> </p>
-<%end%>

@@ -16,15 +16,14 @@ class FavoritesController < ApplicationController
     end
   end
   
-  end
-
   # DELETE /favorites/1 or /favorites/1.json
   def destroy
+    @activity = @favorite.activity
     @favorite.destroy
-
     respond_to do |format|
       format.html { redirect_to favorites_url, notice: "Favorite was successfully destroyed." }
       format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
@@ -38,4 +37,4 @@ class FavoritesController < ApplicationController
     def favorite_params
       params.require(:favorite).permit(:user_id, :activity_id)
     end
-
+  end

@@ -1,0 +1,3 @@
+<%=turbo_stream.replace "first_turbo_frame" do%>
+        <%= button_to "Like", favorites_path, params:{favorite:{activity_id:@activity.id}}, method: :post%>
+<%end%>

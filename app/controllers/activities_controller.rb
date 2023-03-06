@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-
+    @favorite = Favorite.find_by(user_id: helpers.current_user.id, activity_id: params[:id])
   end
 
   def destroy
