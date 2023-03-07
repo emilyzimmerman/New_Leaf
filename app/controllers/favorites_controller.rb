@@ -8,12 +8,20 @@ class FavoritesController < ApplicationController
 
 
   # POST /favorites or /favorites.json
+
   def create
     @favorite = helpers.current_user.favorites.new(favorite_params)
-    if !@favorite.save
-      flash[:notice] = @favorite.errors.full_messages
-      redirect_to activities_path
+    respond_to do |format|
+      if @favorite.save
+        format.html { redirect_to favorites_url, notice: "Review was successfully created." }
+        format.json { render :show, status: :created, location: @favorite }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @favorite.errors, status: :unprocessable_entity }
+      end
     end
+
   end
   
   # DELETE /favorites/1 or /favorites/1.json

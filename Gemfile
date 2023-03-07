@@ -52,6 +52,7 @@ gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem 'open-uri'
 gem 'nokogiri'
 gem 'bcrypt'
+gem 'faker'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

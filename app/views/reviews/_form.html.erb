@@ -1,4 +1,4 @@
-<div class= 'container'>
+<div class= 'container' style="padding:30px; background-color: #125E32; border-radius: 15%; width: 45%">
 <%= form_with(model: review, url: activity_reviews_path) do |form| %>
   <% if review.errors.any? %>
   <div class="alert alert-danger" role="alert">
@@ -22,7 +22,7 @@
 
 <div><p> &nbsp </p></div>
 
-<div class="form-floating">
+<div class="form-floating" style="margin-bottom: 30px">
     <%= form.text_field :date, value: Time.now.strftime("%A, %B, %d, %Y"), readonly: :true, class: "form-control" %>
   <label for="floatingTextarea2"><%= form.label :date%></label>
 </div>

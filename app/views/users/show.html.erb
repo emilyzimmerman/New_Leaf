@@ -1,56 +1,74 @@
-<%= stylesheet_link_tag "user"%>
 
-<div class="userPage">
-<div style="text-align:center">
-   <h2>Welcome to your dashboard <%= @user.username%></h2>
+<div class="header">
+ <img 
+   src="https://img.freepik.com/free-photo/panoramic-shot-christmas-tree-perfect-background_181624-23490.jpg?w=1380&t=st=1678130785~exp=1678131385~hmac=39eb965a22727d979744068c748a96e5688d886d9039a3d62b8a150433de4a25" 
+   class="img-fluid" alt="..." 
+     style= "
+      width:100%;">
 </div>
-<hr>
-<h2><%= @user.username%> Created Activites </h2>
-   <div class="row">
-    <% @user.activities.each do |activity| %>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-      <div class="card" style="width: 18rem">
-            <div>        
-               <%= link_to activity_path(activity) do%>
-               <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
-               <%end%>
-            </div>
-            <div class="card-body">
-               <h2><b> <%= activity.name %> </b></h2>
-               <p class="card-text">
-                  <p>Description: <%= activity.description%></p>
-               </p>
-            </div>
-         </div>
-      </div>
-      <%end%>
+   <div class="container">
+   <div style="margin-top: 30px">
+       <h2>Welcome to your dashboard <%= @user.username%></h2>
    </div>
 
-<h2><%= @user.username%> Favorites </h2>
-   <div class="row">
-    <% @user.favorites.each do |favorite| %>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-      <div class="card" style="width: 18rem">
-            <div>        
-               <%= link_to activity_path(favorite.activity) do%>
-               <%= image_tag favorite.activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
-               <%end%>
+   <hr>
+   <div style="margin-top: 30px">
+   <h2><%= @user.username%> Created Activites </h2>
+      <div class="row">
+         <% @user.activities.each do |activity| %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+             <div class="card" style="width: 18rem">
+                  <div>        
+                     <%= link_to activity_path(activity) do%>
+                     <%= image_tag activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
+                     <%end%>
+                  </div>
+                  <div class="card-body">
+                     <h2><b> <%= activity.name %> </b></h2>
+                     <p class="card-text">
+                        <p>Description: <%= activity.description%></p>
+                     </p>
+                  </div>
+               </div>
             </div>
-            <div class="card-body">
-               <h2><b> <%= favorite.activity.name %> </b></h2>
-               <p class="card-text">
-                  <p>Description: <%= favorite.activity.description%></p>
-               </p>
-            </div>
-         </div>
+         <%end%>
       </div>
-      <%end%>
    </div>
 
-<h2><%= @user.username%> Reviews </h2>
-   <% @user.reviews.each do |review| %>
-      <p> <%= review.date %> </p>
-      <p><%= review.content %> </p>
-   <%end%>
+<div style="margin-top: 30px">
+   <h2><%= @user.username%> Favorites </h2>
+      <div class="row">
+         <% @user.favorites.each do |favorite| %>
+         <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="card" style="width: 18rem">
+               <div>        
+                  <%= link_to activity_path(favorite.activity) do%>
+                  <%= image_tag favorite.activity.image_path, class:"card-img-top", style: "border: 1px solid black" %> 
+                  <%end%>
+               </div>
+               <div class="card-body">
+                  <h2><b> <%= favorite.activity.name %> </b></h2>
+                  <p class="card-text">
+                     <p>Description: <%= favorite.activity.description%></p>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <%end%>
+      </div>
+</div>
 
+   <div style="margin-top: 30px">
+   <h2><%= @user.username%> Reviews </h2>
+      <% @user.reviews.each do |review| %>
+        <div class="card" style="8 rem">
+               <div class="card-header">
+                     <%= review.date.strftime("%B, %d, %Y") if review.date.present? %>
+               </div>
+               <div class="card-body">
+                     <p><%= review.content %> </p>
+               </div>
+            </div>
+      <%end%>
+   </div>
 </div>

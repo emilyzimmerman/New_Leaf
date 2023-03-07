@@ -1,18 +1,17 @@
-<div style= "padding: 30px">
+<%= stylesheet_link_tag "about"%>
+<div class="activityPage">
 <%= link_to "Back", activities_path, class:"btn btn-outline-secondary"%>
-<div><p>&nbsp</p></div>
-<h1><%= @activity.name%></h1>
-
-<% if @activity.user %>
-    <div> <h3><%= link_to "By #{@activity.user.username}", @activity.user %></h3></div>
-<%end%>
-
+<div style= "padding:70px">
 <div>
-<h4>Likes: <%= @activity.favorites.count%></h4>
 </div>
 <div class= "container" >
   <div class="row">
     <div class="col-md-6">
+      <h1><%= @activity.name%></h1>
+          <% if @activity.user %>
+          <div> <h3><%= link_to "By #{@activity.user.username}", @activity.user %></h3></div>
+         <%end%>
+         <h4>Likes: <%= @activity.favorites.count%></h4>
         <div class="card" style="width: 25rem;">
             <%= image_tag @activity.image_path, style: "border: 1px solid black", class:"card-img-top" %> 
           <div class="card-body">
@@ -25,8 +24,8 @@
           <% end %>
         </div>
         <% if current_user == @activity.user%>
-        <%= link_to "Edit", edit_activity_path(@activity), class:"btn btn-outline-success"%>
-        <%= button_to "Delete", @activity, method: :delete, class:"btn btn-outline-danger" %>
+        <%= link_to "Edit", edit_activity_path(@activity), class:"btn btn-success"%>
+        <%= button_to "Delete", @activity, method: :delete, class:"btn btn-danger" %>
         <%end%>
     </div>
 <div class="col-md-6">
@@ -61,6 +60,7 @@
                             <%= button_to "Delete", activity_review_path(@activity, review), method: :delete, class:"btn btn-outline-danger"%>
                             <%end%>                    
                           </p>
+                          
                           <div class="d-flex flex-row">
                             <i class="fas fa-star text-warning me-2"></i>
                             <i class="far fa-check-circle" style="color: #aaa;"></i>
@@ -91,5 +91,6 @@
   <%else%>
   <%= button_to "Unlike", favorite_path(@favorite), method: :delete%>
   <%end%>
-<%end%>
 
+<%end%>
+</div>
